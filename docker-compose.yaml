@@ -1,0 +1,68 @@
+version: '3'
+
+services:
+
+  #budowanie usugi nginx
+  nginx:
+    #podanie obrazu, na podstawie, ktorego jest tworzony kontener
+    image: nginx:latest
+    #mapowanie portu
+    ports:
+      - 6666:80
+    #montowanie wolumenów
+    volumes:
+      - ./public:/usr/nginx/php
+      - ./nginx:/etc/nginx/conf.d
+    #czekanie na uruchomienie uslugi php
+    depends_on:
+      - php
+    #przyłączenie do sieci 
+    networks:
+      - frontend
+      - backend
+
+  #budowanie usugi php
+  php:
+    #podanie obrazu, na podstawie, ktorego jest tworzony kontener
+    image: php:8-fpm
+    #montowanie wolumenów
+    volumes:
+      - ./public:/usr/nginx/php
+    #przyłączenie do sieci 
+    networks:
+      - backend
+
+  #budowanie usugi mysql
+  mysql:
+    #podanie obrazu, na podstawie, ktorego jest tworzony kontener
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: 'admin'
+    #montowanie wolumenu
+    volumes:
+      - ./database:/var/lib/mysql
+    #przyłączenie do sieci 
+    networks:
+      - backend
+
+  #budowanie usugi phpmyadmin
+  phpmyadmin:
+    #podanie obrazu, na podstawie, ktorego jest tworzony kontener
+    image: phpmyadmin/phpmyadmin:latest
+    #czekanie na uruchomienie uslugi mysql
+    depends_on:
+      - mysql
+    #połączenie z obrazem bazy danych
+    links:
+      - "mysql:db"
+    #mapowanie portu
+    ports:
+      - 6001:80
+    #przyłączenie do sieci 
+    networks:
+      - backend
+
+#tworzenie sieci
+networks:
+  frontend:
+  backend:
