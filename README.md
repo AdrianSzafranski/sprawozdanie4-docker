@@ -12,7 +12,8 @@ a) uruchamiających Stack: ```sudo docker compose up -d```, gdzie  ```-d``` to d
 ![polecenie1](https://github.com/AdrianSzafranski/sprawozdanie4-docker/blob/main/ssy/polecenie1.png)<br />
 b) uruchamiających PhpMyAdmin: ```sudo docker compose up -d phpmyadmin```<br />
 ![polecenie2](https://github.com/AdrianSzafranski/sprawozdanie4-docker/blob/main/ssy/polecenie2.png)<br />
-c) tworzących testową bazę ```docker exec <nazwa-kontenera> mysql --execute="CREATE DATABASE <nazwa-bazy-danych>" --user=<użytkownik> --password=<hasło>```<br />
+c) tworzących testową bazę<br />
+```docker exec <nazwa-kontenera> mysql --execute="CREATE DATABASE <nazwa-bazy-danych>" --user=<użytkownik> --password=<hasło>```<br />
 ![polecenie3_1](https://github.com/AdrianSzafranski/sprawozdanie4-docker/blob/main/ssy/polecenie3_1.png)<br />
 ![polecenie3_2](https://github.com/AdrianSzafranski/sprawozdanie4-docker/blob/main/ssy/polecenie3_2.png)<br />
 
