@@ -2,7 +2,7 @@
 
 <b>Opis struktury projektu</b>
 - docker-compose.yaml - plik zawierający definicje usług
-- nginx/default.conf - plik konfiguracyjny serwera Nginx
+- nginx/default.conf - plik konfigurujący serwer Nginx
 - public/index.php - strona, którą wyświetla serwer Nginx
 - docker-compose.png - plik ilustrujący strukturę projektu 
 
